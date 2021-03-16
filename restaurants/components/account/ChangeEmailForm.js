@@ -2,7 +2,7 @@ import { isEmpty } from "lodash";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Input, Button, Icon } from "react-native-elements";
-import { updateProfile } from "../../utils/actions";
+import { updateEmail, reauthenticate } from "../../utils/actions";
 import { validateEmail } from "../../utils/helpers";
 
 export default function ChangeEmailForm({
@@ -23,20 +23,27 @@ export default function ChangeEmailForm({
       return;
     }
 
-    // setLoading(true);
+    setLoading(true);
 
-    // const result = await updateProfile({ displayName: newDisplayName });
+    const resultReauthentication = await reauthenticate(password);
 
-    // setLoading(false);
+    if (!resultReauthentication.statusRespnse) {
+      setLoading(false);
+      setErrorPassword("Invalid password");
+      return;
+    }
 
-    // if (!result.statusResponse) {
-    //   setError("Error updating name and last name, try again later");
-    //   return;
-    // }
+    const resultUpdateEmail = await updateEmail(newEmail);
+    setLoading(false);
 
-    // setReloadUser(true);
-    // toastRef.current.show("Name and last name was updated successfully", 300);
-    // setShowModal(false);
+    if (!resultUpdateEmail.statusRespnse) {
+      setErrorEmail("Error updating email");
+      return;
+    }
+
+    setReloadUser(true);
+    toastRef.current.show("Email was updated successfully", 3000);
+    setShowModal(false);
   };
 
   const validateForm = () => {

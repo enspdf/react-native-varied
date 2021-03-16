@@ -31,7 +31,7 @@ export default function ChangeDisplayNameForm({
     }
 
     setReloadUser(true);
-    toastRef.current.show("Name and last name was updated successfully", 300);
+    toastRef.current.show("Name and last name was updated successfully", 3000);
     setShowModal(false);
   };
 
