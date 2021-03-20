@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   StyleSheet,
   Text,
@@ -6,6 +6,7 @@ import {
   View,
   FlatList,
   Modal,
+  ActivityIndicator,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 
@@ -13,7 +14,6 @@ import TodoList from "./components/TodoList";
 import AddListModal from "./components/AddListModal";
 
 import colors from "./Colors";
-import tempData from "./tempData";
 import Fire from "./Fire";
 
 export default class App extends React.Component {
@@ -53,23 +53,26 @@ export default class App extends React.Component {
   };
 
   addList = (list) => {
-    this.setState({
-      lists: [
-        ...lists,
-        { ...list, id: this.state.lists.length + 1, todos: [] },
-      ],
+    firebase.addList({
+      name: list.name,
+      color: list.color,
+      todos: [],
     });
   };
 
   updateList = (list) => {
-    this.setState({
-      lists: this.state.lists.map((item) => {
-        return item.id === list.id ? list : item;
-      }),
-    });
+    firebase.updateList(list);
   };
 
   render() {
+    if (this.state.loading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color={colors.blue} />
+        </View>
+      );
+    }
+
     return (
       <View style={styles.container}>
         <Modal
@@ -82,9 +85,7 @@ export default class App extends React.Component {
             addList={this.addList}
           />
         </Modal>
-        <View>
-          <Text>User: {this.state.user?.uid}</Text>
-        </View>
+
         <View style={{ flexDirection: "row" }}>
           <View style={styles.divider} />
           <Text style={styles.title}>
