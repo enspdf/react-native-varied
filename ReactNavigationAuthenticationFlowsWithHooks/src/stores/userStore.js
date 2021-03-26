@@ -3,6 +3,7 @@ import axios from 'axios';
 import SecureStorage from 'react-native-secure-storage';
 
 import {BASE_URL} from '../config';
+import {sleep} from '../utils/sleep';
 
 export const useUserStore = create(set => ({
   login: async (email, password) => {
@@ -17,7 +18,6 @@ export const useUserStore = create(set => ({
     };
 
     await SecureStorage.setItem('user', JSON.stringify(user));
-
     set({user});
   },
   logout: async () => {
@@ -25,6 +25,7 @@ export const useUserStore = create(set => ({
     set({user: undefined});
   },
   register: async (email, password) => {
+    await sleep(2000);
     await axios.post(`${BASE_URL}/auth/local/register`, {
       username: email,
       email,

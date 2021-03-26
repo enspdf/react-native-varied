@@ -1,16 +1,16 @@
-import React, {useLayoutEffect, useContext} from 'react';
+import React, {useEffect, useLayoutEffect, useContext} from 'react';
 import {StyleSheet, FlatList} from 'react-native';
 
 import {Product} from '../components/Product';
 import {HeaderIconButton} from '../components/HeaderIconButton';
 import {HeaderIconsContainer} from '../components/HeaderIconsContainer';
 
-import {AuthContext} from '../context/AuthContext';
-import {useGet} from '../hooks/useGet';
 import {ThemeContext} from '../context/ThemeContext';
+import {useUserStore} from '../stores/userStore';
+import {useProductsStore} from '../stores/productsStore';
 
 export function ProductsListScreen({navigation}) {
-  const {logout} = useContext(AuthContext);
+  const logout = useUserStore(state => state.logout);
   const switchTheme = useContext(ThemeContext);
 
   useLayoutEffect(() => {
@@ -24,7 +24,14 @@ export function ProductsListScreen({navigation}) {
     });
   }, [navigation, logout, switchTheme]);
 
-  const products = useGet('/products');
+  const [products, fetchProducts] = useProductsStore(state => [
+    state.products,
+    state.fetchProducts,
+  ]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   function renderProduct({item: product}) {
     return <Product product={product} />;

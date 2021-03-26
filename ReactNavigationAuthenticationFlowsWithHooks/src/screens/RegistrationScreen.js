@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 
 import {Heading} from '../components/Heading';
@@ -7,11 +7,10 @@ import {FilledButton} from '../components/FilledButton';
 import {Error} from '../components/Error';
 import {IconButton} from '../components/IconButton';
 import {AuthContainer} from '../components/AuthContainer';
-import {AuthContext} from '../context/AuthContext';
 import {Loading} from '../components/Loading';
 
 export function RegistrationScreen({navigation}) {
-  const {register} = useContext(AuthContext);
+  const register = useUserStore(state => state.register);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);

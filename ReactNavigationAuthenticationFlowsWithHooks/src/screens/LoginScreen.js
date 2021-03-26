@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
 
 import {Heading} from '../components/Heading';
@@ -7,11 +7,11 @@ import {FilledButton} from '../components/FilledButton';
 import {TextButton} from '../components/TextButton';
 import {Error} from '../components/Error';
 import {AuthContainer} from '../components/AuthContainer';
-import {AuthContext} from '../context/AuthContext';
 import {Loading} from '../components/Loading';
+import {useUserStore} from '../stores/userStore';
 
 export function LoginScreen({navigation}) {
-  const {login} = useContext(AuthContext);
+  const login = useUserStore(state => state.login);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
