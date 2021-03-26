@@ -1,70 +1,61 @@
-import React, {useReducer, useMemo} from 'react';
+import React, {useState, useCallback} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import axios from 'axios';
+import {useDarkMode} from 'react-native-dark-mode';
+
+import {lightTheme} from './theme/light';
+import {darkTheme} from './theme/dark';
+
+import {AuthContext} from './context/AuthContext';
 
 import {AuthStackNavigator} from './navigators/AuthStackNavigator';
-import {lightTheme} from './theme/light';
-import {AuthContext} from './context/AuthContext';
-import {BASE_URL} from './config';
-import {createAction} from './config/createAction';
+import {MainStackNavigator} from './navigators/MainStackNavigator';
+import {useAuth} from './hooks/useAuth';
+import {UserContext} from './context/UserContext';
+import {SplashScreen} from './screens/SplashScreen';
+import {ThemeContext} from './context/ThemeContext';
+import {StatusBar} from 'react-native';
 
 const RootStack = createStackNavigator();
 
 export default function () {
-  const [state, dispatch] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case 'SET_USER':
-          return {
-            ...state,
-            user: {
-              ...action.payload,
-            },
-          };
-        default:
-          return state;
-      }
-    },
-    {user: undefined},
-  );
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const {auth, state} = useAuth();
+  // const isDarkMode = useDarkMode();
 
-  const auth = useMemo(
-    () => ({
-      login: async (email, password) => {
-        const {data} = await axios.post(`${BASE_URL}/auth/local`, {
-          identifier: email,
-          password,
-        });
+  const switchTheme = useCallback(() => {
+    setIsDarkMode(!isDarkMode);
+  }, [isDarkMode]);
 
-        const user = {
-          email: data.user.email,
-          token: data.jwt,
-        };
+  function renderScreens() {
+    if (state.loading) {
+      return <RootStack.Screen name="Splash" component={SplashScreen} />;
+    }
 
-        dispatch(createAction('SET_USER', user));
-      },
-      logout: () => {
-        console.log('Logout');
-      },
-      register: async (email, password) => {
-        await axios.post(`${BASE_URL}/auth/local/register`, {
-          username: email,
-          email,
-          password,
-        });
-      },
-    }),
-    [],
-  );
+    return state.user ? (
+      <RootStack.Screen name="MainStack">
+        {() => (
+          <UserContext.Provider value={state.user}>
+            <MainStackNavigator />
+          </UserContext.Provider>
+        )}
+      </RootStack.Screen>
+    ) : (
+      <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
+    );
+  }
 
   return (
-    <AuthContext.Provider value={auth}>
-      <NavigationContainer theme={lightTheme}>
-        <RootStack.Navigator screenOptions={{headerShown: false}}>
-          <RootStack.Screen name="AuthStack" component={AuthStackNavigator} />
-        </RootStack.Navigator>
-      </NavigationContainer>
-    </AuthContext.Provider>
+    <ThemeContext.Provider value={switchTheme}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <AuthContext.Provider value={auth}>
+        <NavigationContainer theme={isDarkMode ? darkTheme : lightTheme}>
+          <RootStack.Navigator
+            screenOptions={{headerShown: false, animationEnabled: false}}>
+            {renderScreens()}
+          </RootStack.Navigator>
+        </NavigationContainer>
+      </AuthContext.Provider>
+    </ThemeContext.Provider>
   );
 }
