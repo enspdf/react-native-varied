@@ -22,7 +22,8 @@
     "react-native-reanimated": "^2.0.0",
     "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^2.18.1",
-    "react-native-secure-storage": "^0.1.2"
+    "react-native-secure-storage": "^0.1.2",
+    "zustand": "^3.3.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
