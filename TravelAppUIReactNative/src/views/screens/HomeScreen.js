@@ -10,6 +10,7 @@ import {
   FlatList,
   ImageBackground,
   Dimensions,
+  TouchableOpacity,
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -19,7 +20,7 @@ import places from '../../consts/places';
 
 const {width} = Dimensions.get('screen');
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   const categoryIcons = [
     <Icon name="flight" size={25} color={COLORS.primary} />,
     <Icon name="beach-access" size={25} color={COLORS.primary} />,
@@ -41,35 +42,39 @@ const HomeScreen = () => {
 
   const Card = ({place}) => {
     return (
-      <ImageBackground style={styles.cardImage} source={place.image}>
-        <Text
-          style={{
-            color: COLORS.white,
-            fontSize: 20,
-            fontWeight: 'bold',
-            marginTop: 10,
-          }}>
-          {place.name}
-        </Text>
-        <View
-          style={{
-            flex: 1,
-            justifyContent: 'space-between',
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-          }}>
-          <View style={{flexDirection: 'row'}}>
-            <Icon name="place" size={20} color={COLORS.white} />
-            <Text style={{marginLeft: 5, color: COLORS.white}}>
-              {place.location}
-            </Text>
+      <TouchableOpacity
+        activeOpacity={0.8}
+        onPress={() => navigation.navigate('DetailsScreen', place)}>
+        <ImageBackground style={styles.cardImage} source={place.image}>
+          <Text
+            style={{
+              color: COLORS.white,
+              fontSize: 20,
+              fontWeight: 'bold',
+              marginTop: 10,
+            }}>
+            {place.name}
+          </Text>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'space-between',
+              flexDirection: 'row',
+              alignItems: 'flex-end',
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <Icon name="place" size={20} color={COLORS.white} />
+              <Text style={{marginLeft: 5, color: COLORS.white}}>
+                {place.location}
+              </Text>
+            </View>
+            <View style={{flexDirection: 'row'}}>
+              <Icon name="star" size={20} color={COLORS.white} />
+              <Text style={{marginLeft: 5, color: COLORS.white}}>5.0</Text>
+            </View>
           </View>
-          <View style={{flexDirection: 'row'}}>
-            <Icon name="star" size={20} color={COLORS.white} />
-            <Text style={{marginLeft: 5, color: COLORS.white}}>5.0</Text>
-          </View>
-        </View>
-      </ImageBackground>
+        </ImageBackground>
+      </TouchableOpacity>
     );
   };
 
@@ -125,7 +130,7 @@ const HomeScreen = () => {
               height: 120,
               paddingHorizontal: 20,
             }}>
-            <View>
+            <View style={{flex: 1}}>
               <Text style={styles.headerTitle}>Explore the</Text>
               <Text style={styles.headerTitle}>beautiful places</Text>
               <View style={styles.inputContainer}>
@@ -177,8 +182,8 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: COLORS.white,
-    fontSize: 23,
     fontWeight: 'bold',
+    fontSize: 23,
   },
   inputContainer: {
     height: 60,
@@ -191,6 +196,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     alignItems: 'center',
     elevation: 12,
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.5,
   },
   categoryContainer: {
     marginTop: 60,
