@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://barter:barter@cluster0.gpgam.mongodb.net/barter?retryWrites=true&w=majority",
+  "barterSecret": "barter_secret"
+}
