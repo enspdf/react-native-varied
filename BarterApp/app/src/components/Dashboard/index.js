@@ -20,13 +20,26 @@ export const DashboardNavigator = () => (
       options={{headerShown: false}}
       component={Dashboard}
     />
-    <DashBoardStack.Screen name="Card" component={Card} />
-    <DashBoardStack.Screen name="Transactions" component={Transactions} />
-    <DashBoardStack.Screen name="More" component={More} />
+    <DashBoardStack.Screen
+      name="Card"
+      component={Card}
+      options={{headerBackTitleVisible: false}}
+    />
+    <DashBoardStack.Screen
+      name="Transactions"
+      component={Transactions}
+      options={{headerBackTitleVisible: false}}
+    />
+    <DashBoardStack.Screen
+      name="More"
+      component={More}
+      options={{headerBackTitleVisible: false}}
+    />
     <DashBoardStack.Screen
       name="Send"
       component={Send}
       options={{
+        headerBackTitleVisible: false,
         headerTitle: () => (
           <Text variant="title1" color="black" fontSize={20}>
             Bank Transfer
@@ -39,6 +52,7 @@ export const DashboardNavigator = () => (
       name="SendMoney"
       component={SendMoney}
       options={{
+        headerBackTitleVisible: false,
         headerTitle: () => (
           <Text variant="title1" color="black" fontSize={20}>
             Send Money
@@ -51,6 +65,7 @@ export const DashboardNavigator = () => (
       name="Notifications"
       component={Notifications}
       options={{
+        headerBackTitleVisible: false,
         headerTitle: () => (
           <Text variant="title1" color="black" fontSize={20}>
             Notifications

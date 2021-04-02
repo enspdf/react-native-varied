@@ -1,3 +1,3 @@
-const pattern = require('./pattern.jpg');
+const pattern = require('./pattern.jpeg');
 
 export {pattern};
