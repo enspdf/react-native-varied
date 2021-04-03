@@ -21,4 +21,4 @@ export const UPDATE_AMOUNT = 'UPDATE_ACCOUNT';
 export const UPDATE_BALANCE = 'UPDATE_BALANCE';
 
 /* API */
-export const API_URI = `http://192.168.1.10:5000`;
+export const API_URI = `http://192.168.1.1:5000`;
