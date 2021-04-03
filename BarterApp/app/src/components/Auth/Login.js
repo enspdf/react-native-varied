@@ -20,6 +20,7 @@ function Login({navigation}) {
           <Form>
             <Item style={{...styles.itemStyle}}>
               <Input
+                autoCapitalize="none"
                 placeholder="Email Address"
                 keyboardType="email-address"
                 defaultValue={email}
