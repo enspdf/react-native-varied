@@ -33,5 +33,7 @@ mongoose
 app.use("/api/users", require("./routes/api/users"));
 app.use("/api/auth", require("./routes/api/auth"));
 
+require("./middleware/socket")(app, io, db);
+
 const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`Server started on port ${port}`));

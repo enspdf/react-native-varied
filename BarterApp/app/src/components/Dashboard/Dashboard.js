@@ -74,6 +74,7 @@ export const menus = [
 
 function Dashboard({navigation}) {
   const {navigate} = navigation;
+  const dispatch = useDispatch();
 
   const {account_balance} = useSelector(state => state.auth);
 
@@ -88,6 +89,11 @@ function Dashboard({navigation}) {
   const onCTA = router => {
     if (router === 'Send') return navigate('Send');
   };
+
+  useEffect(() => {
+    socket.emit('joinService', {roomID});
+    dispatch(receiver());
+  }, []);
 
   return (
     <Box flex={1} backgroundColor="white" justifyContent="flex-end">

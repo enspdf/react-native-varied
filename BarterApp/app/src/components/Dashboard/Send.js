@@ -3,6 +3,7 @@ import theme, {Box, Text} from '../theme';
 import {Nigeria} from '../../Icons';
 import {TextInput} from 'react-native-gesture-handler';
 import {Button} from 'native-base';
+import {useDispatch} from 'react-redux';
 
 function Send({navigation}) {
   const {navigate} = navigation;
