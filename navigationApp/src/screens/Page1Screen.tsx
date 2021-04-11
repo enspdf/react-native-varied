@@ -1,8 +1,9 @@
 import React, {useEffect} from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {Text, View, Button, TouchableOpacity} from 'react-native';
-import {styles} from '../theme/appTheme';
+import {colors, styles} from '../theme/appTheme';
 import {DrawerScreenProps} from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // interface Props extends StackScreenProps<any, any> {}
 interface Props extends DrawerScreenProps<any, any> {}
@@ -13,7 +14,11 @@ export const Page1Screen = ({navigation}: Props) => {
   useEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
-        <Button title="Menu" onPress={() => navigation.toggleDrawer()} />
+        <TouchableOpacity
+          onPress={() => navigation.toggleDrawer()}
+          style={{marginLeft: 10}}>
+          <Icon name="menu-outline" color={colors.primary} size={35} />
+        </TouchableOpacity>
       ),
     });
   }, []);
@@ -29,11 +34,13 @@ export const Page1Screen = ({navigation}: Props) => {
         <TouchableOpacity
           style={{...styles.bigButton, backgroundColor: '#5856D6'}}
           onPress={() => navigate('PersonScreen', {id: 1, name: 'Pedro'})}>
+          <Icon name="body-outline" color="white" size={35} />
           <Text style={styles.bigButtonText}>Pedro</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={{...styles.bigButton, backgroundColor: '#FF9427'}}
           onPress={() => navigate('PersonScreen', {id: 2, name: 'Maria'})}>
+          <Icon name="woman-outline" color="white" size={35} />
           <Text style={styles.bigButtonText}>Maria</Text>
         </TouchableOpacity>
       </View>
