@@ -22,8 +22,18 @@ export const menuItems: MenuItem[] = [
     component: 'AlertScreen',
   },
   {
-    name: 'TextInputs',
+    name: 'Text Inputs',
     icon: 'document-text-outline',
     component: 'TextInputScreen',
+  },
+  {
+    name: 'Pull To Refresh',
+    icon: 'refresh-outline',
+    component: 'PullToRefreshScreen',
+  },
+  {
+    name: 'Custom Section List',
+    icon: 'list-outline',
+    component: 'CustomSectionListScreen',
   },
 ];
