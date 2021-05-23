@@ -6,10 +6,14 @@ export const useForm = <T extends Object>(initialState: T) => {
   const onChange = (value: string, field: keyof T) => {
     setState({ ...state, [field]: value });
   };
+  const setFormValue = (form: T) => {
+    setState(form);
+  };
 
   return {
     ...state,
     form: state,
     onChange,
+    setFormValue,
   };
 };

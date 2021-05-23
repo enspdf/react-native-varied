@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Button, View, Text, StyleSheet } from 'react-native';
-import { AuthContext } from '../contet/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 
 export const ProtectedScreen = () => {
   const { user, token, logOut } = useContext(AuthContext);

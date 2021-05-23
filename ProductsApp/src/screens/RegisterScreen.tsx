@@ -13,7 +13,7 @@ import {
 import { WhiteLogo } from '../components/WhiteLogo';
 import { useForm } from '../hooks/useForm';
 import { loginStyles } from '../theme/loginTheme';
-import { AuthContext } from '../contet/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 
 interface Props extends StackScreenProps<any, any> {}
 

@@ -15,7 +15,7 @@ import {
 
 import { Background } from '../components/Background';
 import { WhiteLogo } from '../components/WhiteLogo';
-import { AuthContext } from '../contet/AuthContext';
+import { AuthContext } from '../context/AuthContext';
 import { useForm } from '../hooks/useForm';
 import { loginStyles } from '../theme/loginTheme';
 
