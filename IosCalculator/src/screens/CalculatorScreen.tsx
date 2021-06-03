@@ -1,5 +1,6 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import {View, Text} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import {Button} from '../components/Button';
 import {useCalculator} from '../hooks/useCalculator';
@@ -19,6 +20,10 @@ export const CalculatorScreen = () => {
     add,
     calculate,
   } = useCalculator();
+
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
 
   return (
     <View style={styles.calculatorContainer}>

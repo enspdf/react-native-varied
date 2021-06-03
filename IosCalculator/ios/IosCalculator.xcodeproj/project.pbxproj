@@ -13,6 +13,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		295BFA79D5BCA13985AAA8E2 /* libPods-IosCalculator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4A535CFE2103188FA3ACEB /* libPods-IosCalculator.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C81EEDF2265DCA8800C15487 /* splash-img.png in Resources */ = {isa = PBXBuildFile; fileRef = C81EEDF1265DCA8800C15487 /* splash-img.png */; };
 		D82A5C0BBB34159BB933DB17 /* libPods-IosCalculator-IosCalculatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADDD11C5BCD2EE285CBA48C5 /* libPods-IosCalculator-IosCalculatorTests.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		7A6015A8B864528DD67BE5F0 /* Pods-IosCalculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IosCalculator.debug.xcconfig"; path = "Target Support Files/Pods-IosCalculator/Pods-IosCalculator.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = IosCalculator/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADDD11C5BCD2EE285CBA48C5 /* libPods-IosCalculator-IosCalculatorTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IosCalculator-IosCalculatorTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C81EEDF1265DCA8800C15487 /* splash-img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-img.png"; sourceTree = "<group>"; };
 		CC4A535CFE2103188FA3ACEB /* libPods-IosCalculator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IosCalculator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F972E663BFDAB974894F3D57 /* Pods-IosCalculator-IosCalculatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IosCalculator-IosCalculatorTests.debug.xcconfig"; path = "Target Support Files/Pods-IosCalculator-IosCalculatorTests/Pods-IosCalculator-IosCalculatorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				C81EEDF1265DCA8800C15487 /* splash-img.png */,
 			);
 			name = IosCalculator;
 			sourceTree = "<group>";
@@ -104,7 +107,6 @@
 				F972E663BFDAB974894F3D57 /* Pods-IosCalculator-IosCalculatorTests.debug.xcconfig */,
 				3FA6FF08B767DA06516A47C3 /* Pods-IosCalculator-IosCalculatorTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -160,7 +162,6 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				92A2F086C742A2CA401BC0C7 /* [CP] Embed Pods Frameworks */,
 				7C040FF0CCFBBAA544D72845 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -183,7 +184,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				C3E9672F55EB104811D0664E /* [CP] Embed Pods Frameworks */,
 				2DE8891B38C001B1B6705B28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -244,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				C81EEDF2265DCA8800C15487 /* splash-img.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,40 +320,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IosCalculator-IosCalculatorTests/Pods-IosCalculator-IosCalculatorTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		92A2F086C742A2CA401BC0C7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IosCalculator-IosCalculatorTests/Pods-IosCalculator-IosCalculatorTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IosCalculator-IosCalculatorTests/Pods-IosCalculator-IosCalculatorTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IosCalculator-IosCalculatorTests/Pods-IosCalculator-IosCalculatorTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C3E9672F55EB104811D0664E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IosCalculator/Pods-IosCalculator-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-IosCalculator/Pods-IosCalculator-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IosCalculator/Pods-IosCalculator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C955E21685C6F4B8C4F89B85 /* [CP] Check Pods Manifest.lock */ = {
@@ -485,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K749N6FU3P;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = IosCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -496,7 +464,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = me.shackox.IosCalculator;
 				PRODUCT_NAME = IosCalculator;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -511,6 +479,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = K749N6FU3P;
 				INFOPLIST_FILE = IosCalculator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,7 +490,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = me.shackox.IosCalculator;
 				PRODUCT_NAME = IosCalculator;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
